@@ -6,9 +6,15 @@
         xmlns:local="clr-namespace:Note"
         xmlns:pu="https://opensource.panuon.com/wpf-ui"
         mc:Ignorable="d"
-        MouseMove="MainWindow_OnMouseMove"
+        pu:WindowXCaption.Height="0"
+        MouseLeftButtonDown="MainWindow_OnMouseLeftButtonDown"
+        Loaded="MainWindow_OnLoaded"
+        Background="Transparent"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <ContentPresenter Content="{Binding NowView}"></ContentPresenter>
-    </Grid>
+    <Border BorderBrush="DarkGray" BorderThickness="1" CornerRadius="20" Background="White">
+        <Grid >
+            <ContentPresenter Content="{Binding NowView,UpdateSourceTrigger=PropertyChanged}"></ContentPresenter>
+        </Grid>
+    </Border>
+
 </pu:WindowX>

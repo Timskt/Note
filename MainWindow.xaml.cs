@@ -28,15 +28,24 @@ namespace Note
             InitializeComponent();
             DataContext = Ioc.Default.GetRequiredService<MainWindowViewModel>();
         }
-
+        
         /// <summary>
         /// 窗口移动
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void MainWindow_OnMouseMove(object sender, MouseEventArgs e)
+        private void MainWindow_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             this.DragMove();
+        }
+
+        private void MainWindow_OnLoaded(object sender, RoutedEventArgs e)
+        {
+            var border = VisualTreeHelper.GetChild(this, 0) as Border;
+            if (border!=null)
+            {
+                border.Background = new SolidColorBrush(Colors.White);
+            }
         }
     }
 }
